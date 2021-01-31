@@ -1,0 +1,607 @@
+input[type=text] {
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  width: 100%;
+}
+input[type=number] {
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.charsheet {
+  padding: 10px;
+}
+
+.sheet-character {
+  display: grid;
+  grid-template-columns: 250px 90px 170px 170px;
+  gap: 8px;
+  grid-template-areas:
+          "header header header logo"
+          "stats health health xp"
+          "stats magic magic xp"
+          "jobs-skills jobs-skills combat-skills combat-skills"
+          "jobs-skills jobs-skills misc-skills misc-skills"
+          "specialities specialities misc-skills misc-skills";
+
+  .sheet-header {
+    grid-area: header;
+  }
+  .sheet-stats {
+    grid-area: stats;
+  }
+  .sheet-health {
+    grid-area: health;
+  }
+  .sheet-magic {
+    grid-area: magic;
+  }
+  .sheet-xp {
+    grid-area: xp;
+  }
+  .sheet-jobs-skills {
+    grid-area: jobs-skills;
+  }
+  .sheet-specialities {
+    grid-area: specialities;
+  }
+  .sheet-combat-skills {
+    grid-area: combat-skills;
+  }
+  .sheet-misc-skills {
+    grid-area: misc-skills;
+  }
+}
+
+.sheet-str {
+  font-weight: bold;
+  color: #cf2541;
+}
+
+.sheet-dex {
+  font-weight: bold;
+  color: #3da610;
+}
+
+.sheet-int {
+  font-weight: bold;
+  color: #0633ff;
+}
+
+.sheet-cha {
+  font-weight: bold;
+  color: #ff9500;
+}
+
+.sheet-per {
+  font-weight: bold;
+  color: #ab31d8;
+}
+
+.sheet-header {
+
+  padding: 8px;
+  border: 1px solid black;
+  display: grid;
+  grid-template-areas: "character-name level" "player-name empty" "race age" "job size";
+  grid-template-columns: minmax(150px, 1fr) 120px;
+  grid-row-gap: 8px;
+  grid-column-gap: 16px;
+
+  .sheet-label {
+    font-size: 18px;
+    display: inline-block;
+    min-width: 60px;
+  }
+
+  .sheet-character-name {
+    grid-area: character-name;
+  }
+
+  .sheet-player-name {
+    grid-area: player-name;
+  }
+
+  .sheet-race {
+    grid-area: race;
+  }
+
+  .sheet-job {
+    grid-area: job;
+  }
+
+  .sheet-age {
+    grid-area: age;
+  }
+
+  .sheet-level {
+    grid-area: level;
+  }
+
+  .sheet-size {
+    grid-area: size;
+  }
+
+  .sheet-character-name,
+  .sheet-player-name,
+  .sheet-job,
+  .sheet-race {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+
+    input {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid black;
+    }
+  }
+
+  .sheet-size,
+  .sheet-level,
+  .sheet-age {
+    .sheet-value {
+      input {
+        display: inline-block;
+        max-width: 50px;
+        border-bottom: 1px solid black;
+      }
+    }
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.sheet-stats {
+  border: 1px solid black;
+
+  .sheet-stat {
+    height: 40px;
+    display: grid;
+    grid-template-columns: 100px 48px 48px 48px;
+    align-items: center;
+    justify-items: center;
+
+    input {
+      font-size: 22px;
+      border: 0;
+      width: calc(100% - 4px);
+      height: 100%;
+      text-align: center;
+    }
+
+    .sheet-base {
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      width: 100%;
+      height: 100%;
+      border: 1px solid black;
+      border-bottom: 0;
+    }
+
+    .sheet-bonus, .sheet-armor-mod {
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      width: 100%;
+      height: 100%;
+      border: 1px solid black;
+      border-left: 0;
+      border-bottom: 0;
+    }
+
+    .sheet-armor-mod {
+      padding-top: 1px;
+      border-bottom: 1px solid black;
+      height: 37px;
+      padding-bottom: 1px;
+    }
+  }
+
+  .sheet-stat:nth-child(6) {
+    .sheet-base, .sheet-bonus {
+      border-bottom: 1px solid black;
+    }
+  }
+
+  .sheet-mv {
+    height: 50px;
+    display: grid;
+    grid-template-columns: 100px 80px 56px;
+    align-items: center;
+
+    input {
+      width: 100%;
+    }
+  }
+}
+
+
+.sheet-health {
+  border: 1px solid black;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "header header header" "maximum damage armor";
+  input {
+    text-align: center;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+  }
+
+  h3 {
+    grid-area: header;
+  }
+  div {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+  .sheet-health-max {
+    grid-area: maximum;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+  }
+  .sheet-health-damage {
+    grid-area: damage;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+  }
+  .sheet-health-armor {
+    grid-area: armor;
+    border-top: 1px solid black;
+  }
+}
+
+
+.sheet-magic {
+  border: 1px solid black;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "header header header" "maximum left level";
+  h3 {
+    grid-area: header;
+  }
+  div {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+  input {
+    text-align: center;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+  }
+  .sheet-magic-max {
+    grid-area: maximum;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+  }
+  .sheet-magic-left {
+    grid-area: left;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+  }
+  .sheet-magic-level {
+    grid-area: level;
+    border-top: 1px solid black;
+  }
+
+}
+.sheet-xp {
+  border: 1px solid black;
+  display: grid;
+  grid-template-rows: auto 1fr 1fr;
+  grid-template-areas: "header" "xp" "next-level";
+
+  div {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+  input {
+    text-align: center;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+  }
+  .sheet-xp-value {
+    grid-area: xp;
+  }
+  .sheet-xp-to-next-level {
+    grid-area: next-level;
+  }
+}
+
+.sheet-skill {
+  display: grid;
+  grid-template-columns: 170px 50px 40px 40px 30px;
+  input[type=number] {
+    border-bottom: 1px solid black;
+    width: 30px;
+  }
+  .sheet-skill-level {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+}
+
+.sheet-speciality {
+  display: grid;
+}
+
+.sheet-jobs-skills {
+  border: 1px solid black;
+  padding: 8px;
+
+  .sheet-job-skills {
+    h4 {
+      margin: 8px 0;
+    }
+  }
+}
+.sheet-specialities {
+  border: 1px solid black;
+  padding: 8px;
+}
+.sheet-combat-skills {
+  border: 1px solid black;
+  padding: 8px;
+}
+.sheet-misc-skills {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+.sheet-separator {
+  height: 1px;
+  background-color: black;
+  opacity: 0.25;
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 4px;
+}
+.sheet-health,
+.sheet-magic,
+.sheet-xp,
+.sheet-jobs-skills,
+.sheet-specialities,
+.sheet-combat-skills,
+.sheet-misc-skills {
+  h3 {
+    text-align: center;
+  }
+}
+
+.sheet-equipment {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 150px 370px 200px;
+  grid-template-areas: "weapons weapons weapons"
+  "equipped-items magic-arrows magic-arrows"
+  "equipped-items magic-marble magic-marble"
+  "equipped-items food food"
+  "equipped-items torch torch"
+  "equipped-items potions money";
+
+  .sheet-weapons {
+    display: grid;
+    grid-area: weapons;
+    .sheet-weapons-line {
+      display: grid;
+      grid-template-columns: 1fr 100px 100px 100px;
+      gap: 8px;
+    }
+    .sheet-weapons-header {
+      font-weight: bold;
+    }
+    input {
+      border-bottom: 1px solid black;
+    }
+  }
+  .sheet-equipped-items {
+    display: grid;
+    grid-area: equipped-items;
+    input {
+      border-bottom: 1px solid black;
+    }
+    .sheet-equipment-slot-square {
+      text-align: center;
+      input {
+        border: 1px solid black;
+        width: 50px;
+        height: 50px;
+        font-size: 30px;
+      }
+    }
+    .sheet-equipment-slot-label {
+      text-align: center;
+    }
+  }
+  .sheet-magic-arrows {
+    display: grid;
+    grid-area: magic-arrows;
+    .sheet-magic-arrows-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+    }
+
+    .sheet-checkboxes {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: auto auto;
+    }
+    .sheet-magic-arrow {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1fr auto;
+      input {
+        border-bottom: 1px solid black;
+      }
+    }
+  }
+  .sheet-magic-marbles {
+    display: grid;
+    grid-area: magic-marble;
+    .sheet-magic-marbles-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+    }
+    .sheet-magic-marble {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1fr auto;
+      input {
+        border-bottom: 1px solid black;
+      }
+    }
+    .sheet-checkboxes {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: auto;
+    }
+  }
+
+  .sheet-food {
+    display: grid;
+    grid-area: food;
+    .sheet-food-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+    }
+    .sheet-checkboxes {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: auto auto auto auto auto auto;
+    }
+  }
+  .sheet-torch {
+    display: grid;
+    grid-area: torch;
+
+    .sheet-torch-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+    }
+    .sheet-checkboxes {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: auto auto auto auto auto auto auto;
+    }
+  }
+
+  .sheet-potions {
+    display: grid;
+    grid-area: potions;
+    .sheet-potions-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+    }
+    .sheet-potion {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1fr auto;
+      input {
+        border-bottom: 1px solid black;
+      }
+      .sheet-checkboxes {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: auto auto auto auto auto;
+      }
+    }
+  }
+
+  .sheet-weapons,
+  .sheet-equipped-items,
+  .sheet-magic-arrows,
+  .sheet-magic-marbles,
+  .sheet-food,
+  .sheet-torch,
+  .sheet-potions,
+  .sheet-money {
+    border: 1px solid black;
+    padding: 8px;
+  }
+
+  .sheet-money {
+    h4 {
+      text-align: center;
+    }
+    display: grid;
+    grid-area: money;
+    padding: 8px 0;
+    input {
+      text-align: center;
+      font-size: 40px;
+      height: 50px;
+    }
+    > div {
+      padding: 8px;
+      border-top: 1px solid black;
+    }
+  }
+}
+
+.sheet-inventory {
+  border: 1px solid black;
+  padding: 8px;
+
+  .sheet-inventory-slot {
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    gap: 8px;
+  }
+
+  .sheet-inventory-header {
+    font-weight: bold;
+  }
+
+  input {
+    border-bottom: 1px solid black;
+  }
+
+}
+
+.sheet-notes {
+  textarea {
+    width: 100%;
+    min-height: 500px;
+
+  }
+}
+
+/*Configure the tab buttons*/
+.sheet-character,
+.sheet-equipment,
+.sheet-inventory,
+.sheet-notes {
+  display: none;
+}
+
+/* show the selected tab */
+.sheet-tabstoggle[value="character"] ~ div.sheet-character,
+.sheet-tabstoggle[value="equipment"] ~ div.sheet-equipment,
+.sheet-tabstoggle[value="inventory"] ~ div.sheet-inventory,
+.sheet-tabstoggle[value="notes"] ~ div.sheet-notes {
+  display: grid;
+}

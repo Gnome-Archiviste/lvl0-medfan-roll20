@@ -297,6 +297,28 @@
                             <input type="checkbox" name="attr_skill_champion_DetectMotivation_reroll_2"/>
                         </div>
                     </div>
+                    <!-- -->
+                    <div class="sheet-skill">
+                        <div class="sheet-skill-label">Sortilège</div>
+                        <div class="sheet-skill-levels">
+                            <input type="checkbox" name="attr_skill_champion_Spellcasting_1" value="1"/>
+                            <input type="checkbox" name="attr_skill_champion_Spellcasting_2" value="1"/>
+                            <input type="checkbox" name="attr_skill_champion_Spellcasting_3" value="1"/>
+                        </div>
+                        <div class="sheet-skill-stat">
+                            + <span class="sheet-cha">Cha</span>
+                        </div>
+                        <div class="sheet-skill-level">
+                            <input type="number" name="attr_skill_champion_Spellcasting_extra" style="display: none" value="0" />
+                            <input type="number" name="attr_skill_champion_Spellcasting"
+                                   value="(@{CHA}+@{skill_champion_Spellcasting_1}+@{skill_champion_Spellcasting_2}+@{skill_champion_Spellcasting_3}+@{skill_champion_Spellcasting_extra})"
+                                   disabled/>
+                        </div>
+                        <div class="sheet-skill-rerolls">
+                            <input type="checkbox" name="attr_skill_champion_Spellcasting_reroll_1"/>
+                            <input type="checkbox" name="attr_skill_champion_Spellcasting_reroll_2"/>
+                        </div>
+                    </div>
                 </div>
                 <div class="sheet-job-skills">
                     <h4>Forestier</h4>
@@ -566,6 +588,28 @@
                         <div class="sheet-skill-rerolls">
                             <input type="checkbox" name="attr_skill_mage_DetectMagic_reroll_1"/>
                             <input type="checkbox" name="attr_skill_mage_DetectMagic_reroll_2"/>
+                        </div>
+                    </div>
+                    <!-- -->
+                    <div class="sheet-skill">
+                        <div class="sheet-skill-label">Sortilège</div>
+                        <div class="sheet-skill-levels">
+                            <input type="checkbox" name="attr_skill_mage_Spellcasting_1" value="1"/>
+                            <input type="checkbox" name="attr_skill_mage_Spellcasting_2" value="1"/>
+                            <input type="checkbox" name="attr_skill_mage_Spellcasting_3" value="1"/>
+                        </div>
+                        <div class="sheet-skill-stat">
+                            + <span class="sheet-int">Int</span>
+                        </div>
+                        <div class="sheet-skill-level">
+                            <input type="number" name="attr_skill_mage_Spellcasting_extra" style="display: none" value="0" />
+                            <input type="number" name="attr_skill_mage_Spellcasting"
+                                   value="(@{INT}+@{skill_mage_Spellcasting_1}+@{skill_mage_Spellcasting_2}+@{skill_mage_Spellcasting_3}+@{skill_mage_Spellcasting_extra})"
+                                   disabled/>
+                        </div>
+                        <div class="sheet-skill-rerolls">
+                            <input type="checkbox" name="attr_skill_mage_Spellcasting_reroll_1"/>
+                            <input type="checkbox" name="attr_skill_mage_Spellcasting_reroll_2"/>
                         </div>
                     </div>
                 </div>
